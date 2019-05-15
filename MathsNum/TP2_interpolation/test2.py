@@ -2,10 +2,12 @@ from pylab import *    # tout numpy et pyplot
 from interp import *   # importation des fcts d'interpolation
  
 n = 7                    # nb de points d'interpolation
-a = 0; b = 2*pi           # l'intervalle d'interpolation
+a = -4; b = 4         # l'intervalle d'interpolation
 m = 300                   # nb de points pour le trace des courbes
-t = linspace(a, b, m)     # les abscisses pour le trace des courbes
-x = linspace(a, b, n)     # les abscisses d'interpolation
+t = tchebichev(a, b, m)     # les abscisses pour le trace des courbes
+x = tchebichev(a, b, m)
+print(x)
+     # les abscisses d'interpolation
 y = runge(x)                # les ordonnees d'interpolation
  
 # le calcul
@@ -23,4 +25,4 @@ title('Interpolation de la fct runge')
  
 subplot(2,1,2)
 plot(t, e, 'b-')
-title("erreur d'interpolation : e(t)=sin(t)-p(t)")
+title("erreur d'interpolation : e(t)=runge(t)-p(t)")
