@@ -28,3 +28,12 @@ def lagrange_v(tv,x,y):
    
 def runge(x):
     return (1/(1+x*x))
+
+def tchebichev(a, b, n):
+    N = np.zeros(n)
+    for i in range(n) :
+        N[i] = np.cos((2 * i + 1) * np.pi / (2. * n))
+        N[i] = (a + b) / 2 + ((b - a) / 2) * N[i]
+    return N
+        
+def lagrange_poids_fb(x):
