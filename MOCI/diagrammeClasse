@@ -1,0 +1,41 @@
+@startuml
+
+abstract utilisateur {
+    nom : string
+    prenom : string
+    num_telephone : string
+    adr_mail : string
+    adr_postale : string
+}
+
+class client {
+
+}
+
+class responsable_pc {
+    pc : point_collecte
+}
+
+class producteur {
+}
+
+class responsable_plateforme {
+}
+
+class point_collecte {
+    adr_postale : string
+}
+
+class panier {
+
+}
+
+class produit {
+
+}
+utilisateur <-- client
+utilisateur <-- responsable_pc
+utilisateur <-- responsable_plateforme
+utilisateur <-- producteur
+
+@enduml
