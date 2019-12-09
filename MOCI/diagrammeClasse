@@ -6,10 +6,11 @@ abstract utilisateur {
     num_telephone : string
     adr_mail : string
     adr_postale : string
+    rib : rib
 }
 
 class client {
-
+    panier : panier
 }
 
 class responsable_pc {
@@ -17,25 +18,53 @@ class responsable_pc {
 }
 
 class producteur {
+    stock : dictionnaire<produit : produit, qte_lot_max : int>
 }
 
-class responsable_plateforme {
+class gestionnaire_plateforme {
 }
 
-class point_collecte {
+class PointCollecte {
     adr_postale : string
 }
 
 class panier {
+    commande : dictionnaire<produit : produit, qte_lot : int>
+    prix_total : float
+    cycle : cycle
+}
 
+class cycle {
+    pc : point_collecte
+    date_heure_debut : date 
+    date_heure_fin : date
 }
 
 class produit {
-
+    nom : string
+    bio : booleen
+    taille_lot : float
+    prix_lot : float
 }
-utilisateur <-- client
-utilisateur <-- responsable_pc
-utilisateur <-- responsable_plateforme
-utilisateur <-- producteur
+
+class rib {
+    nom_titulaire : string
+    iban : string
+    bic : string
+}
+
+utilisateur <|-- client
+utilisateur <|-- responsable_pc
+utilisateur <|-- gestionnaire_plateforme
+utilisateur <|-- producteur
+
+utilisateur <-- rib
+client <-- panier
+responsable_pc <-- point_collecte
+cycle <-- point_collecte
+panier <-- cycle
+producteur *-- produit
+panier *-- produit
+
 
 @enduml
